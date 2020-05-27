@@ -1,0 +1,30 @@
+{
+  "name": "node_api",
+  "version": "1.0.0",
+  "description": "API in Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishigupta121/Node_API.git"
+  },
+  "author": "Rishi Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rishigupta121/Node_API/issues"
+  },
+  "homepage": "https://github.com/rishigupta121/Node_API#readme",
+  "dependencies": {
+    "apollo-server": "^2.14.0",
+    "apollo-server-express": "^2.14.0",
+    "bluebird": "^3.7.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.16"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.3"
+  }
+}
