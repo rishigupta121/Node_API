@@ -2,9 +2,17 @@
   "name": "node_api",
   "version": "1.0.0",
   "description": "API in Nodejs",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf dist",
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "yarn clean && tsc",
+    "prestart": "yarn build",
+    "start": "tsc --watch & nodemon dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pre-commit": "yarn tslint && yarn build",
+    "tslint": "tslint --project tsconfig.json",
+    "tslint:fix": "tslint --project tsconfig.json --fix"
   },
   "repository": {
     "type": "git",
@@ -12,6 +20,11 @@
   },
   "author": "Rishi Gupta",
   "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pre-commit"
+    }
+  },
   "bugs": {
     "url": "https://github.com/rishigupta121/Node_API/issues"
   },
@@ -22,9 +35,14 @@
     "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
     "mongoose": "^5.9.16"
   },
   "devDependencies": {
+    "husky": "^4.2.5",
+    "nodemon": "^2.0.4",
+    "tslint": "^6.1.2",
     "typescript": "^3.9.3"
   }
 }
