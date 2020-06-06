@@ -31,7 +31,7 @@
   "homepage": "https://github.com/rishigupta121/Node_API#readme",
   "dependencies": {
     "apollo-server": "^2.14.0",
-    "apollo-server-express": "^2.14.0",
+    "apollo-server-express": "^2.14.2",
     "bluebird": "^3.7.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
