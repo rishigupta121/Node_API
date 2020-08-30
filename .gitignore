@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# ssh 
+node_api
+node_api.pub
