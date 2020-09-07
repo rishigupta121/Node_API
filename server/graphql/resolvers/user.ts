@@ -16,7 +16,15 @@ const USER_ADDED = 'USER_ADDED';
  * User Queries
  */
 const UserQueries = {
-  users: async (parent, args, context) => {
+  users: async (parent, args, { isAuth, userId }) => {
+     const getUser:any = await User.get(userId);
+     console.log(getUser);
+    if (!isAuth) {
+      throw new Error('Non Authenticated');
+    }
+    if(await getUser.userType!=='admin'){
+      throw new Error('Non Authorized admin');
+    }
     try {
       const users = await User.find();
       return users.map((user) => {
@@ -29,6 +37,7 @@ const UserQueries = {
   user: async (parent, { userId }) => {
     try {
       const user = await User.findById(userId);
+      console.log('h',userId);
       return transformUser(user);
     } catch (err) {
       throw err;
@@ -45,6 +54,7 @@ const UserQueries = {
       });
       return {
         userId: user.id,
+        userType:user.userType,
         token,
         tokenExpiration: 1
       };
@@ -70,7 +80,8 @@ const UserMutation = {
           _id: new mongoose.Types.ObjectId(),
           email: userInput.email,
           name: userInput.name,
-          password: userInput.password
+          password: userInput.password,
+          userType:userInput.userType
         });
         const savedUser = await newUser.save();
         pubsub.publish(USER_ADDED, {

@@ -23,6 +23,7 @@ const typeDefs = gql`
     _id: ID!
     email: String!
     name: String!
+    userType:String!
     password: String
     createdAt: String!
     updatedAt: String!
@@ -52,7 +53,7 @@ const schema: ApolloServerExpressConfig = {
     if (connection) {
       return { isAuth: payload.authToken };
     }
-    return { isAuth: req.isAuth };
+    return { isAuth: req.isAuth, userId:req.userId };
   },
   playground: true
 };

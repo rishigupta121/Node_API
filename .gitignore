@@ -106,3 +106,5 @@ dist
 # ssh 
 node_api
 node_api.pub
+.DS_Store
+.env_prod

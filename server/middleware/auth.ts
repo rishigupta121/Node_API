@@ -23,6 +23,7 @@ export default (req: any, res: any, next: any) => {
     req.isAuth = false;
     return next();
   }
+
   req.isAuth = true;
   req.userId = decodedToken.userId;
   return next();
